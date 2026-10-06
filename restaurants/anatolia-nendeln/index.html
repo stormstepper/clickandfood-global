@@ -246,6 +246,20 @@ html,body{overflow-x:clip}
 .langsw-menu a:hover{color:var(--text);background:rgba(239,236,228,.06)}
 .langsw-menu a.on{color:var(--gold)}
 @media(max-width:640px){.langsw{margin:10px 0 0}.langsw-menu{right:auto;left:0}}
+
+/* ---- Mobile header fix: 3 elements never fit on one row ---- */
+@media(max-width:640px){
+  header .nav{height:auto;min-height:64px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;row-gap:10px}
+  header .nav>a:first-child{flex:0 0 auto}
+  header .nav .logo{height:26px;width:auto}
+  header .langsw{order:2;margin:0}
+  header .langsw .langsw-btn{padding:8px 12px;font-size:11px}
+  header .langsw .langsw-menu{left:auto;right:0}
+  header .nav>.btn-gold{order:3;flex-basis:100%;justify-content:center;padding:11px 14px;font-size:14px;white-space:nowrap;line-height:1.2}
+}
+@media(min-width:641px) and (max-width:840px){
+  header .nav{flex-wrap:wrap;height:auto;row-gap:8px;padding-top:10px;padding-bottom:10px}
+}
 </style>
 <link rel="alternate" href="https://clickandfood.global/restaurants/anatolia-nendeln/" hreflang="de">
 <link rel="alternate" href="https://clickandfood.global/en/restaurants/anatolia-nendeln/" hreflang="en">
