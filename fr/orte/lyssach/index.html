@@ -353,31 +353,19 @@ html,body{overflow-x:clip}
 }
 </style>
 <script>
-// language dropdown toggle
+// language dropdown: close-on-outside, remember choice, reset on bfcache restore
 (function(){
-  function init(){
-    var sw=document.querySelector('.langsw');
-    var btn=document.querySelector('.langsw-btn');
-    if(!sw||!btn)return;
-    function toggle(e){
-      e.preventDefault();e.stopPropagation();
-      var open=sw.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open?'true':'false');
-    }
-    btn.addEventListener('click',toggle);
-    btn.addEventListener('touchend',function(e){toggle(e)},{passive:false});
-    document.addEventListener('click',function(e){
-      if(sw.classList.contains('open')&&!e.target.closest('.langsw')){sw.classList.remove('open')}
-      var a=e.target.closest('.langsw-menu a');
-      if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
-    });
-    document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'){sw.classList.remove('open')}
-    });
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}
-  // bfcache restore (mobile back-navigation): rebind & reset state
-  window.addEventListener('pageshow',function(e){if(e.persisted){var sw=document.querySelector('.langsw');if(sw)sw.classList.remove('open');init()}});
+  function closeAll(){var s=document.querySelectorAll('.langsw.open');for(var i=0;i<s.length;i++){s[i].classList.remove('open')}}
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.langsw')){closeAll()}
+    var a=e.target.closest('.langsw-menu a');
+    if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
+  },true);
+  document.addEventListener('touchstart',function(e){
+    if(!e.target.closest('.langsw')){closeAll()}
+  },{passive:true,capture:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAll()}});
+  window.addEventListener('pageshow',function(e){if(e.persisted){closeAll()}});
 })();
 </script>
 </head>
@@ -390,7 +378,7 @@ html,body{overflow-x:clip}
       <li><a href="https://clickandfood.global/fr/#orte">Localités</a></li>
       <li><a href="https://clickandfood.global/fr/#cashback">Cashback</a></li>
     </ul>
-    <div class="langsw"><button class="langsw-btn" type="button" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>FR <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="langsw-menu" role="menu"><a href="/orte/lyssach/" data-lang="de" role="menuitem">DE <span>Deutsch</span></a><a href="/en/orte/lyssach/" data-lang="en" role="menuitem">EN <span>English</span></a><a href="/fr/orte/lyssach/" class="on" data-lang="fr" role="menuitem">FR <span>Français</span></a><a href="/it/orte/lyssach/" data-lang="it" role="menuitem">IT <span>Italiano</span></a><a href="/rm/orte/lyssach/" data-lang="rm" role="menuitem">RM <span>Rumantsch</span></a></div></div>
+    <div class="langsw"><button class="langsw-btn" type="button" aria-haspopup="true" aria-expanded="false" onclick="var s=this.parentElement;var o=s.classList.toggle('open');this.setAttribute('aria-expanded',o);return false;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>FR <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button><div class="langsw-menu" role="menu"><a href="/orte/lyssach/" data-lang="de" role="menuitem">DE <span>Deutsch</span></a><a href="/en/orte/lyssach/" data-lang="en" role="menuitem">EN <span>English</span></a><a href="/fr/orte/lyssach/" class="on" data-lang="fr" role="menuitem">FR <span>Français</span></a><a href="/it/orte/lyssach/" data-lang="it" role="menuitem">IT <span>Italiano</span></a><a href="/rm/orte/lyssach/" data-lang="rm" role="menuitem">RM <span>Rumantsch</span></a></div></div>
     <a class="btn btn-gold" href="https://clickandfood.ch/" rel="noopener">Commander maintenant</a>
   </div>
 </header>

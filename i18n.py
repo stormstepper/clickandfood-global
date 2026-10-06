@@ -443,7 +443,8 @@ def hreflang_block(path):
     return "\n".join(out)
 
 def lang_switcher(path, lang):
-    """Compact dropdown language switcher. path = German page path starting with /."""
+    """Dropdown language switcher. path = German page path starting with /.
+    Uses a direct inline onclick toggle — bulletproof on all mobile browsers."""
     items = []
     for l in LANGS:
         href = localized(path, l)
@@ -451,7 +452,8 @@ def lang_switcher(path, lang):
         items.append('<a href="%s"%s data-lang="%s" role="menuitem">%s <span>%s</span></a>'
                      % (href, cls, l, l.upper(), NAMES[l]))
     return ('<div class="langsw">'
-            '<button class="langsw-btn" type="button" aria-haspopup="true" aria-expanded="false">'
+            '<button class="langsw-btn" type="button" aria-haspopup="true" aria-expanded="false" '
+            'onclick="var s=this.parentElement;var o=s.classList.toggle(\'open\');this.setAttribute(\'aria-expanded\',o);return false;">'
             '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>'
             + lang.upper() +
             ' <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
@@ -512,31 +514,19 @@ REDIRECT_SCRIPT = """<script>
 <script>__LANGSW_JS__</script>"""
 
 LANGSW_JS = """
-// language dropdown toggle
+// language dropdown: close-on-outside, remember choice, reset on bfcache restore
 (function(){
-  function init(){
-    var sw=document.querySelector('.langsw');
-    var btn=document.querySelector('.langsw-btn');
-    if(!sw||!btn)return;
-    function toggle(e){
-      e.preventDefault();e.stopPropagation();
-      var open=sw.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open?'true':'false');
-    }
-    btn.addEventListener('click',toggle);
-    btn.addEventListener('touchend',function(e){toggle(e)},{passive:false});
-    document.addEventListener('click',function(e){
-      if(sw.classList.contains('open')&&!e.target.closest('.langsw')){sw.classList.remove('open')}
-      var a=e.target.closest('.langsw-menu a');
-      if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
-    });
-    document.addEventListener('keydown',function(e){
-      if(e.key==='Escape'){sw.classList.remove('open')}
-    });
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}
-  // bfcache restore (mobile back-navigation): rebind & reset state
-  window.addEventListener('pageshow',function(e){if(e.persisted){var sw=document.querySelector('.langsw');if(sw)sw.classList.remove('open');init()}});
+  function closeAll(){var s=document.querySelectorAll('.langsw.open');for(var i=0;i<s.length;i++){s[i].classList.remove('open')}}
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.langsw')){closeAll()}
+    var a=e.target.closest('.langsw-menu a');
+    if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
+  },true);
+  document.addEventListener('touchstart',function(e){
+    if(!e.target.closest('.langsw')){closeAll()}
+  },{passive:true,capture:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAll()}});
+  window.addEventListener('pageshow',function(e){if(e.persisted){closeAll()}});
 })();
 """
 
