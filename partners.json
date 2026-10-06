@@ -1,0 +1,137 @@
+[
+ {
+  "slug": "anaterra-grill",
+  "name": "Anaterra Grill",
+  "city": "Zuchwil",
+  "postal": "4528",
+  "country": "CH",
+  "cuisine_label": "Pide · Fleischgerichte · Fischgerichte",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/anaterra-grill-zuchwil-4528"
+ },
+ {
+  "slug": "first-class",
+  "name": "First Class",
+  "city": "Schötz",
+  "postal": "6247",
+  "country": "CH",
+  "cuisine_label": "Pasta · Pizza · Burger",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/first-class"
+ },
+ {
+  "slug": "hot-momo-bern",
+  "name": "Hot Momo Bern",
+  "city": "Ostermundigen",
+  "postal": "3072",
+  "country": "CH",
+  "cuisine_label": "Momos",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/hot-momo-bern"
+ },
+ {
+  "slug": "krua-thailand-restaurant-takeaway-1",
+  "name": "Krua Thailand Restaurant & Takeaway",
+  "city": "Liebefeld",
+  "postal": "3097",
+  "country": "CH",
+  "cuisine_label": "Vegetarisch · asiatisch · Thailändisch",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/krua-thailand-restaurant-takeaway"
+ },
+ {
+  "slug": "panini-bar",
+  "name": "Panini Bar",
+  "city": "Solothurn",
+  "postal": "4500",
+  "country": "CH",
+  "cuisine_label": "Pasta · Panini · Piadine",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/panini-bar-solothurn-4500"
+ },
+ {
+  "slug": "pho-saigon-bui-1",
+  "name": "Pho Saigon Bùi",
+  "city": "Liebefeld",
+  "postal": "3097",
+  "country": "CH",
+  "cuisine_label": "Fleischgerichte · Hühnchen · Fischgerichte · Meeresfrüchte",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/pho-saigon-bi"
+ },
+ {
+  "slug": "pizza-kebab-haus-1",
+  "name": "Pizza Kebab Haus",
+  "city": "Urtenen-Schönbühl",
+  "postal": "3322",
+  "country": "CH",
+  "cuisine_label": "Pasta · Pizza · Kebab",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/pizza-kebab-haus-urtenenschoenbuehl"
+ },
+ {
+  "slug": "pizzeria-adler",
+  "name": "Pizzeria Adler",
+  "city": "Tägertschi",
+  "postal": "3111",
+  "country": "CH",
+  "cuisine_label": "Pasta · Pizza · Burger · Pide",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/pizzeria-adler"
+ },
+ {
+  "slug": "pizzeria-durango",
+  "name": "Pizzeria Durango",
+  "city": "Lyssach",
+  "postal": "3421",
+  "country": "CH",
+  "cuisine_label": "Pizza · Burger · Falafel · Kebab",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/pizzeria-durango"
+ },
+ {
+  "slug": "restaurant-tyrol",
+  "name": "Restaurant Tyrol",
+  "city": "Aarwangen",
+  "postal": "4912",
+  "country": "CH",
+  "cuisine_label": "Pasta · Pizza · Burger · Fleischgerichte",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/restaurant-tyrol"
+ },
+ {
+  "slug": "ristorante-pizzeria-gasthof-kreuz",
+  "name": "Ristorante Pizzeria Gasthof Kreuz",
+  "city": "Mümliswil",
+  "postal": "4717",
+  "country": "CH",
+  "cuisine_label": "Pasta · Pizza · Burger · Fleischgerichte",
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/ristorante-pizzeria-gasthof-kreuz"
+ },
+ {
+  "slug": "su-mo-day",
+  "name": "Su Mo Days",
+  "city": "Bützberg",
+  "postal": "4922",
+  "country": "CH",
+  "cuisine_label": null,
+  "order_url": "https://clickandfood.sparissimo.world/restaurants/su-mo-days"
+ },
+ {
+  "slug": "pizzeria-langgasse-19",
+  "name": "Pizzeria Länggasse 19",
+  "city": "Bern",
+  "postal": "3012",
+  "country": "CH",
+  "cuisine_label": "Pizza · Pasta · Italienisch",
+  "order_url": "https://cashback.sparissimo.world/regional-shop/pizzeria-langgasse-19"
+ },
+ {
+  "slug": "restaurant-pizzeria-muhli",
+  "name": "Restaurant & Pizzeria Mühli",
+  "city": null,
+  "postal": null,
+  "country": "CH",
+  "cuisine_label": "Pizza · Italienisch",
+  "order_url": "https://cashback.sparissimo.world/regional-shop/restaurant-pizzeria-muhli"
+ },
+ {
+  "slug": "test-amel",
+  "name": "Test Amel",
+  "city": null,
+  "postal": null,
+  "country": "CH",
+  "cuisine_label": "Restaurant",
+  "order_url": "https://cashback.sparissimo.world/regional-shop/test-amel"
+ }
+]
