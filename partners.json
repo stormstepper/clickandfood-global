@@ -124,14 +124,5 @@
   "country": "CH",
   "cuisine_label": "Pizza · Italienisch",
   "order_url": "https://cashback.sparissimo.world/regional-shop/restaurant-pizzeria-muhli"
- },
- {
-  "slug": "test-amel",
-  "name": "Test Amel",
-  "city": null,
-  "postal": null,
-  "country": "CH",
-  "cuisine_label": "Restaurant",
-  "order_url": "https://cashback.sparissimo.world/regional-shop/test-amel"
  }
 ]

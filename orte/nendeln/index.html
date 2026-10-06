@@ -13,8 +13,6 @@
 <meta property="og:url" content="https://clickandfood.global/orte/nendeln/">
 <meta property="og:locale" content="de_CH">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" href="https://clickandfood.global/orte/nendeln/" hreflang="de">
-<link rel="alternate" href="https://clickandfood.global/orte/nendeln/" hreflang="x-default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650;9..144,750&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -199,7 +197,47 @@ html,body{overflow-x:clip}
   .store-badges{flex-direction:column;align-items:stretch}
   .store-badges a{width:100%;justify-content:center}
 }
+
+.langsw{display:flex;gap:2px;align-items:center;margin-left:14px}
+.langsw a{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--muted);padding:5px 7px;border-radius:8px;text-decoration:none}
+.langsw a:hover{color:var(--text);background:rgba(239,236,228,.06)}
+.langsw a.on{color:var(--gold)}
+@media(max-width:640px){.langsw{flex-wrap:wrap;justify-content:center;margin:10px 0 0}}
 </style>
+<link rel="alternate" href="https://clickandfood.global/orte/nendeln/" hreflang="de">
+<link rel="alternate" href="https://clickandfood.global/en/orte/nendeln/" hreflang="en">
+<link rel="alternate" href="https://clickandfood.global/fr/orte/nendeln/" hreflang="fr">
+<link rel="alternate" href="https://clickandfood.global/it/orte/nendeln/" hreflang="it">
+<link rel="alternate" href="https://clickandfood.global/rm/orte/nendeln/" hreflang="rm">
+<link rel="alternate" href="https://clickandfood.global/en/orte/nendeln/" hreflang="x-default">
+<script>
+(function(){
+  try{
+    var S=['de','en','fr','it','rm'];
+    var path=location.pathname; // German pages live at root
+    var stored='';
+    try{stored=localStorage.getItem('cf-lang')||''}catch(e){}
+    if(stored){
+      if(stored!=='de'&&S.indexOf(stored)>-1){location.replace('/'+stored+path+location.search+location.hash)}
+      return;
+    }
+    var navs=navigator.languages||[navigator.language||'en'];
+    var pick='en';
+    for(var i=0;i<navs.length;i++){
+      var s=(navs[i]||'').slice(0,2).toLowerCase();
+      if(S.indexOf(s)>-1){pick=s;break}
+    }
+    if(pick!=='de'){location.replace('/'+pick+path+location.search+location.hash)}
+  }catch(e){}
+})();
+</script>
+<script>
+// remember manual language choice
+document.addEventListener('click',function(e){
+  var a=e.target.closest('.langsw a');
+  if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
+});
+</script>
 </head>
 <body>
 
@@ -212,6 +250,7 @@ html,body{overflow-x:clip}
       <li><a href="#umgebung">Umgebung</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
+    <nav class="langsw" aria-label="Language"><a href="/orte/nendeln/" class="on" data-lang="de">DE</a><a href="/en/orte/nendeln/" data-lang="en">EN</a><a href="/fr/orte/nendeln/" data-lang="fr">FR</a><a href="/it/orte/nendeln/" data-lang="it">IT</a><a href="/rm/orte/nendeln/" data-lang="rm">RM</a></nav>
     <a class="btn btn-gold" href="https://clickandfood.ch/" rel="noopener">Jetzt bestellen</a>
   </div>
 </header>
