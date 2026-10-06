@@ -363,17 +363,31 @@ html,body{overflow-x:clip}
 </script>
 <script>
 // language dropdown toggle
-document.addEventListener('click',function(e){
-  var sw=document.querySelector('.langsw');
-  var btn=e.target.closest('.langsw-btn');
-  if(btn&&sw){e.preventDefault();var open=sw.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');return}
-  if(sw&&sw.classList.contains('open')&&!e.target.closest('.langsw')){sw.classList.remove('open')}
-  var a=e.target.closest('.langsw-menu a');
-  if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
-});
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'){var sw=document.querySelector('.langsw.open');if(sw)sw.classList.remove('open')}
-});
+(function(){
+  function init(){
+    var sw=document.querySelector('.langsw');
+    var btn=document.querySelector('.langsw-btn');
+    if(!sw||!btn)return;
+    function toggle(e){
+      e.preventDefault();e.stopPropagation();
+      var open=sw.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    }
+    btn.addEventListener('click',toggle);
+    btn.addEventListener('touchend',function(e){toggle(e)},{passive:false});
+    document.addEventListener('click',function(e){
+      if(sw.classList.contains('open')&&!e.target.closest('.langsw')){sw.classList.remove('open')}
+      var a=e.target.closest('.langsw-menu a');
+      if(a){try{localStorage.setItem('cf-lang',a.getAttribute('data-lang'))}catch(x){}}
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){sw.classList.remove('open')}
+    });
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init)}else{init()}
+  // bfcache restore (mobile back-navigation): rebind & reset state
+  window.addEventListener('pageshow',function(e){if(e.persisted){var sw=document.querySelector('.langsw');if(sw)sw.classList.remove('open');init()}});
+})();
 </script>
 </head>
 <body>
